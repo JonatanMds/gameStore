@@ -1,0 +1,109 @@
+{
+  "gameShoppingGames": [
+    {
+      "id": "0",
+      "name": "Sifu",
+      "urlCardBgImage": "https://image.api.playstation.com/vulcan/img/rnd/202201/1616/THJbARAq2YiRVUv5abCQ8GYQ.png",
+      "wishlist": false,
+      "highlighted": false,
+      "value": "R$ 60,00",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit veniam ab, consequatur autem nostrum veritatis quisquam. Reiciendis non odit nihil dolore, rerum eos. Sint, dolorem rem recusandae saepe esse dicta."
+    },
+    {
+      "id": "1",
+      "name": "suicide squad kill the justice league",
+      "urlCardBgImage": "https://images6.alphacoders.com/117/1177249.jpg",
+      "wishlist": true,
+      "highlighted": true,
+      "value": "R$ 299,00",
+      "description": "Dos criadores de Batman: Arkham, Esquadrão Suicida: Mate a Liga da Justiça é um jogo de tiro em terceira pessoa que desafia o gênero, onde os vilões mais sem caráter devem fazer o impossível: Matar a Liga da Justiça."
+    },
+    {
+      "id": "2",
+      "name": "hogwarts legacy",
+      "urlCardBgImage": "https://assets.xboxservices.com/assets/13/cf/13cf037e-0e97-4812-90d9-b18791367f09.jpg?n=Hogwarts-Legacy_GLP-Page-Hero-1084_Redesign_1920x1080_01.jpg",
+      "wishlist": false,
+      "highlighted": false,
+      "value": "R$ 199,00",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit veniam ab, consequatur autem nostrum veritatis quisquam. Reiciendis non odit nihil dolore, rerum eos. Sint, dolorem rem recusandae saepe esse dicta."
+    },
+    {
+      "id": "3",
+      "name": "Kena: Bridge of Spirits",
+      "urlCardBgImage": "https://image.api.playstation.com/vulcan/ap/rnd/202102/2307/vbIii6P97qiAOhdnYdLT85u8.jpg",
+      "wishlist": false,
+      "highlighted": false,
+      "value": "R$ 159,00",
+      "description": "Uma aventura de ação com foco na narrativa, combinando exploração com combates dinâmicos. Desvenda o passado como Kena, uma jovem Guia Espiritual em busca do sagrado Templo da Montanha."
+    }
+  ],
+  "listOfDiscountedGames": [
+    {
+      "id": "0",
+      "name": "Sifu",
+      "urlCardBgImage": "https://image.api.playstation.com/vulcan/img/rnd/202201/1616/THJbARAq2YiRVUv5abCQ8GYQ.png",
+      "wishlist": false,
+      "highlighted": false,
+      "value": "R$ 60,00",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit veniam ab, consequatur autem nostrum veritatis quisquam. Reiciendis non odit nihil dolore, rerum eos. Sint, dolorem rem recusandae saepe esse dicta."
+    },
+    {
+      "id": "1",
+      "name": "suicide squad kill the justice league",
+      "urlCardBgImage": "https://images6.alphacoders.com/117/1177249.jpg",
+      "wishlist": true,
+      "highlighted": true,
+      "value": "R$ 299,00",
+      "description": "Dos criadores de Batman: Arkham, Esquadrão Suicida: Mate a Liga da Justiça é um jogo de tiro em terceira pessoa que desafia o gênero, onde os vilões mais sem caráter devem fazer o impossível: Matar a Liga da Justiça."
+    },
+    {
+      "id": "2",
+      "name": "hogwarts legacy",
+      "urlCardBgImage": "https://assets.xboxservices.com/assets/13/cf/13cf037e-0e97-4812-90d9-b18791367f09.jpg?n=Hogwarts-Legacy_GLP-Page-Hero-1084_Redesign_1920x1080_01.jpg",
+      "wishlist": false,
+      "highlighted": false,
+      "value": "R$ 199,00",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit veniam ab, consequatur autem nostrum veritatis quisquam. Reiciendis non odit nihil dolore, rerum eos. Sint, dolorem rem recusandae saepe esse dicta."
+    },
+    {
+      "id": "3",
+      "name": "Kena: Bridge of Spirits",
+      "urlCardBgImage": "https://image.api.playstation.com/vulcan/ap/rnd/202102/2307/vbIii6P97qiAOhdnYdLT85u8.jpg",
+      "wishlist": false,
+      "highlighted": false,
+      "value": "R$ 159,00",
+      "description": "Uma aventura de ação com foco na narrativa, combinando exploração com combates dinâmicos. Desvenda o passado como Kena, uma jovem Guia Espiritual em busca do sagrado Templo da Montanha."
+    }
+  ],
+  "userLibrary": [
+    {
+      "id": "1",
+      "name": "Sifu",
+      "cardBgImage": "https://image.api.playstation.com/vulcan/img/rnd/202201/1616/THJbARAq2YiRVUv5abCQ8GYQ.png"
+    },
+    {
+      "id": "2",
+      "name": "suicide squad kill the justice league",
+      "cardBgImage": "https://images6.alphacoders.com/117/1177249.jpg"
+    },
+    {
+      "id": "3",
+      "name": "hogwarts legacy",
+      "cardBgImage": "https://assets.xboxservices.com/assets/13/cf/13cf037e-0e97-4812-90d9-b18791367f09.jpg?n=Hogwarts-Legacy_GLP-Page-Hero-1084_Redesign_1920x1080_01.jpg"
+    }
+  ],
+  "progress": [
+    {
+      "id": "1",
+      "name": "suicide squad kill the justice league",
+      "cardBgImage": "https://images6.alphacoders.com/117/1177249.jpg"
+    }
+  ],
+  "wishlist": [
+    {
+      "id": "",
+      "name": "",
+      "cardBgImage": ""
+    }
+  ]
+}
