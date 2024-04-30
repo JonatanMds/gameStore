@@ -8,6 +8,7 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import { api } from "../lib";
 import { WishListContext } from "../components/main";
 import { IoMdSearch } from "react-icons/io";
+import Link from "next/link";
 // import { WishListContext } from "../components/main";
 
 interface HighlightedListProps {
@@ -28,9 +29,8 @@ interface WishListTypes {
 
 export default function Header(){
 
-  const {wishListProp} = useContext(WishListContext)
+  const {wishListProp, wishList, setWishList} = useContext(WishListContext)
   const [listHighlighted, setListHighlighted] = useState<HighlightedListProps[]>([])
-  const [wishList, setWishList] = useState<WishListTypes[]>([])
   const [getValueFromInput, setGetValueFromInput] = useState('')
   const [saveInputValue, setSaveInputValue] = useState('')
   const urlImageAvatarIcon = "https://i.pinimg.com/originals/83/30/62/833062339386349698553fe1cd7cc2f5.jpg"
@@ -40,14 +40,8 @@ export default function Header(){
     setListHighlighted(response.data)
   }
 
-  async function fetchWishList(){
-    const response = await api.get('/wishlist')
-    setWishList(response.data)
-  }
-
   useEffect(()=>{
     fetchHighlightedList();
-    fetchWishList()
   },[])
   
   function currentInputValue(e: React.ChangeEvent<HTMLInputElement>){
@@ -66,6 +60,11 @@ export default function Header(){
     setSaveInputValue(e)
   }
 
+  function verificaSeEstaFavoritado(idGameAtual: string){
+    const verifica = wishList.filter((idGame)=> idGame.id === idGameAtual).length
+    return verifica
+  }
+
   return(
     <header className="flex justify-between items-start mt-6">
       <div className="relative">
@@ -79,7 +78,13 @@ export default function Header(){
         </label>
         <div className="w-[150%] absolute z-10 flex flex-col bg-[#38393b] rounded">{getValueFromInput.length > 0 && filterSearchByName.map((game)=>{
           return(
-            <div 
+            <Link 
+            href={
+              {
+                pathname:'/gamePage',
+                query:`idGame=${game.id}`
+              }
+              } 
             className="w-full flex justify-start items-center cursor-pointer p-1 hover:bg-[#fff] hover:text-[#000]"  
             key={game.id}
             onClick={()=>getGameNameOfFieldSearch(game.name)}
@@ -94,10 +99,12 @@ export default function Header(){
               <div className="w-[60%] pl-2 truncate">
                 <h1 className="font-semibold">{game.name}</h1>
                 <p className="font-light">{game.value}</p>
+                {verificaSeEstaFavoritado(game.id.toString()) > 0 ? <p className="flex justify-end font-light px-2 rounded-tl bg-[#8a5dd2]">wish</p> : undefined}
               </div>
-            </div>
+            </Link>
           )
-        })}</div>
+        })}
+      </div>
       </div>
       <nav className="flex justify-between items-start gap-8">
         <div className="relative flex">
@@ -106,9 +113,14 @@ export default function Header(){
             iconColor="#ffff" 
             iconSize={28} 
           />
-          {wishListProp?.length > 1 ? <p className="flex absolute top-0 right-0 text-xs bg-[#8a5dd2] px-2 rounded-full">{wishListProp?.length - 1}</p> : undefined}
+          {wishListProp?.length > 0 ? <p className="flex absolute top-0 right-0 text-xs bg-[#8a5dd2] px-2 rounded-full">{wishListProp?.length}</p> : undefined}
         </div>
-        <IconsGameShop icon={PiShoppingCart} iconColor="#ffff" iconSize={28} /> 
+        <Link 
+          href="/cart"
+          className="flex"
+        >
+          <IconsGameShop icon={PiShoppingCart} iconColor="#ffff" iconSize={28} /> 
+        </Link>
         <IconsGameShop icon={MdPeopleAlt} iconColor="#ffff" iconSize={28} /> 
         <div className="flex flex items-center gap-4">
           <div className="flex flex-col">

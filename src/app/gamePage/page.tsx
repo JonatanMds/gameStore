@@ -6,6 +6,9 @@ import { api } from "../lib";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Button from "../components/button";
+import { FaPlaystation, FaWindows, FaXbox } from "react-icons/fa";
+import { CiHeart } from "react-icons/ci";
+import React from "react";
 
 type HighlightedListType = {
   id: string,
@@ -34,31 +37,60 @@ export default function GamePage(){
   },[])
   
   return(
-    <div className="flex min-h-screen flex items-start justify-between bg-background-500">
+    <div className="flex min-h-screen flex items-start justify-between bg-[#232426]">
       <SidebarMenu />
       <div className="h-full w-full flex flex-col gap-9">
         {listGames.map((gameInfo)=>{
           return(
             <div key={gameInfo.id}>
-              <div className="w-full grid grid-cols-3">
+              <div className="w-full relative">
               <Image
                 alt=""
                 src={gameInfo.urlCardBgImage}
                 width={1200}
                 height={1200}
-                style={{width:"200px", height:"280px", borderRadius:"8px"}}
+                style={{width:"100%", height:"70vh", objectFit:'cover', objectPosition:'top'}}
               />
-              <section className="flex flex-col justify-end gap-4">
-                <h1 className="text-3xl">{gameInfo.name}</h1>
-                <p className="text-xs">{gameInfo.description}</p>
-                <ul className="flex gap-2">
-                  <li className="border rounded p-2">Xbox</li>
-                  <li className="border rounded p-2">PS5</li>
-                  <li className="border rounded p-2">PC</li>
-                </ul>
+              <section className="w-full absolute bottom-[-36px] flex px-6 pt-6 gap-6 bg-gradient-to-t from-[#232426] from-20%">
+                <Image 
+                  alt=""
+                  src={gameInfo.urlCardBgImage}
+                  width={400}
+                  height={400}
+                  style={{height:"250px", width:"200px", objectFit:"cover", borderRadius:"4%"}}
+                />
+                <div className="flex flex-col justify-between w-[40%]">
+                  <h1 className="text-4xl font-bold">{gameInfo.name}</h1>
+                  <p className="text-sm">{gameInfo.description}</p>
+                  <ul className="flex gap-2">
+                    <li className="border rounded p-2 flex justify-center items-center gap-2">Xbox <FaXbox /></li>
+                    <li className="border rounded p-2 flex justify-center items-center gap-2">PS5 <FaPlaystation /></li>
+                    <li className="border rounded p-2 flex justify-center items-center gap-2">PC <FaWindows /></li>
+                  </ul>
+                </div>
+                <div className="w-[40%] flex flex-col justify-between">
+                  <p className="text-4xl font-bold">5<span className="text-4xl font-bold text-primary-purple-300">/</span>5</p>
+                  <p className="text-primary-purple-300 text-2xl font-semibold"><span className="text-2xl font-semibold text-[#fff]">S</span>core</p>
+                  <section className="w-full flex justify-between">
+                    <ul>
+                      <li>Data de lançamento</li>
+                      <li>Desenvolvido</li>
+                      <li>Distribuído</li>
+                      <li>Gênero</li>
+                    </ul>
+                    <ul>
+                      <li>00/00/0000</li>
+                      <li>Name01</li>
+                      <li>Name02</li>
+                      <li>RPG</li>
+                    </ul>
+                  </section>
+                  <div className="flex gap-4">
+                    <Button idGame={gameInfo.id} linkToPage="/purchase" label="COMPRAR"/>
+                    <CiHeart className="rounded bg-primary-purple-300 p-2" size={36}/>
+                  </div>
+                </div>
               </section>
-              <p>score: 94</p>
-              <Button idGame={gameInfo.id} linkToPage="/purchase" label="Comprar"/>
             </div>
             {/* <div>
               <h1 className="text-2xl">About the game</h1>

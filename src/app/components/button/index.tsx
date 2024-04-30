@@ -16,7 +16,7 @@ export default function Button({label, onClick, linkToPage, idGame}:ButtonProps)
       }
       }>
       <button 
-        className="rounded bg-[#0057ff] p-2 text-sm"
+        className="rounded bg-[#8a5dd2] p-2 text-sm"
         onClick={onClick}
       >{label}</button>
     </Link>

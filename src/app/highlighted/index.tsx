@@ -25,9 +25,8 @@ type WishListType = {
 
 export default function Highlighted(){
 
-  const {wishListProp} = useContext(WishListContext)
+  const {wishListProp, wishList, setWishList} = useContext(WishListContext)
   const [listGame, setListGame] = useState<HighlightedListProps[]>([])
-  const [wishList, setWishList] = useState<WishListType[]>([])
   const [selectedGameId, setSelectedGameId] = useState<WishListType>()
   
   async function fetchListGame(){
@@ -35,12 +34,6 @@ export default function Highlighted(){
     setListGame(response.data)
   }
 
-  async function fetchWishList(){
-    const response = await api.get('/wishlist')
-    setWishList(response.data)
-  }
-  
-  
   async function addNewGameToWishList(){
     const response = await api.post('/wishlist', selectedGameId)
     setWishList([...wishList, response.data])
@@ -59,19 +52,18 @@ export default function Highlighted(){
     if(selectedGameId?.name !== undefined){
       addNewGameToWishList();
     }
-    fetchWishList();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[selectedGameId,])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[selectedGameId])
 
   function changeTheColorOfTheIconIfItIsOnTheWishList(name: string){
-    const checkTheGameAlreadyHasItOnTheWishList = wishListProp.filter((game)=> game.name === name)
+    const checkTheGameAlreadyHasItOnTheWishList = wishList.filter((game)=> game.name === name)
     const teste = checkTheGameAlreadyHasItOnTheWishList.length > 0 ? true : false
-    const colorChange = teste === true ? "#FB5875" : "#FFFF"
+    const colorChange = teste === true ? "#8a5dd2" : "#1d1d1d"
     return colorChange
   }
   
   function changeTheIconIfItIsOnTheWishList(name: string){
-    const checkTheGameAlreadyHasItOnTheWishList = wishListProp.filter((game)=> game.name === name)
+    const checkTheGameAlreadyHasItOnTheWishList = wishList.filter((game)=> game.name === name)
     const teste = checkTheGameAlreadyHasItOnTheWishList.length > 0 ? true : false
     const iconChange = teste === true ? PiHeartFill : FaRegHeart
     return iconChange
@@ -81,8 +73,10 @@ export default function Highlighted(){
     setSelectedGameId({name, urlCardBgImage, id})
   }
 
-  const checkTheGameAlreadyHasItOnTheWishList = listGame.filter((name)=> wishListProp.filter((game)=> game.name === name.name).length)
-  const idCurrentCardWishList = checkTheGameAlreadyHasItOnTheWishList.id != undefined ? checkTheGameAlreadyHasItOnTheWishList?.id : ''
+  function checkIfWishListAlreadyExists(idGameAtual: string){
+    const verifica = wishList.filter((idGame)=> idGame.id === idGameAtual).length
+    return verifica
+  }
 
   return(
     <section className="w-full h-full">
@@ -96,12 +90,13 @@ export default function Highlighted(){
             return(
               <li key={gameInfo.id}>
                 <CardGame
-                onClick={()=>checkTheGameAlreadyHasItOnTheWishList !== undefined ? deleteGameToFavoritesList(idCurrentCardWishList.toString()):gameInformationAddedToWishList(gameInfo.name, gameInfo.urlCardBgImage, gameInfo.id)}
+                onClick={()=> checkIfWishListAlreadyExists(gameInfo.id) > 0 ? deleteGameToFavoritesList(gameInfo.id.toString()):gameInformationAddedToWishList(gameInfo.name, gameInfo.urlCardBgImage, gameInfo.id)}
                 icon={changeTheIconIfItIsOnTheWishList(gameInfo.name)} 
                 iconColor={changeTheColorOfTheIconIfItIsOnTheWishList(gameInfo.name)} 
                 name={gameInfo.name} 
                 value={gameInfo.value} 
                 urlCardBgImage={gameInfo.urlCardBgImage}
+                id={gameInfo.id}
                 />
               </li>
             )

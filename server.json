@@ -13,7 +13,7 @@
       "id": "1",
       "name": "suicide squad kill the justice league",
       "urlCardBgImage": "https://images6.alphacoders.com/117/1177249.jpg",
-      "wishlist": true,
+      "wishlist": false,
       "highlighted": true,
       "value": "R$ 299,00",
       "description": "Dos criadores de Batman: Arkham, Esquadrão Suicida: Mate a Liga da Justiça é um jogo de tiro em terceira pessoa que desafia o gênero, onde os vilões mais sem caráter devem fazer o impossível: Matar a Liga da Justiça."
@@ -101,9 +101,9 @@
   ],
   "wishlist": [
     {
-      "id": "",
-      "name": "",
-      "cardBgImage": ""
+      "id": "3",
+      "name": "Kena: Bridge of Spirits",
+      "urlCardBgImage": "https://image.api.playstation.com/vulcan/ap/rnd/202102/2307/vbIii6P97qiAOhdnYdLT85u8.jpg"
     }
   ]
 }

@@ -1,5 +1,5 @@
 "use client"
-import { PiHeartFill } from "react-icons/pi";
+import { PiHeartFill, PiShoppingCart } from "react-icons/pi";
 import { useContext, useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { api } from "@/app/lib";
@@ -8,6 +8,7 @@ import Carousel from "./carousel";
 import CardIcons from "../components/icons/cardIcons";
 import Button from "../components/button";
 import { WishListContext } from "../components/main";
+import Link from "next/link";
 
 type HighlightedListType = {
   id: string,
@@ -26,9 +27,8 @@ type WishListType = {
 }
 
 export default function MainCard(){
-  const {getUpdatedWishList} = useContext(WishListContext)
+  const {getUpdatedWishList, wishList, setWishList} = useContext(WishListContext)
   const [listHighlighted, setListHighlighted] = useState<HighlightedListType[]>([])
-  const [wishList, setWishList] = useState<WishListType[]>([])
   const [selectedGameId, setSelectedGameId] = useState<WishListType>()
   const [indexOfTheGameSelectedInCarousel, setIndexOfTheGameSelectedInCarousel] = useState(0)
 
@@ -36,12 +36,6 @@ export default function MainCard(){
     const response = await api.get('/gameShoppingGames')
     setListHighlighted(response.data)
   }
-  
-  async function fetchWishList(){
-    const response = await api.get('/wishlist')
-    setWishList(response.data)
-  }
-  
   
   async function addNewGameToWishList(){
     const response = await api.post('/wishlist', selectedGameId)
@@ -61,13 +55,12 @@ export default function MainCard(){
     if(selectedGameId?.name !== undefined){
       addNewGameToWishList();
     }
-    fetchWishList();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[selectedGameId,])
+  },[selectedGameId])
 
 
   function changeTheColorOfTheIconIfItIsOnTheWishList(isWanted:boolean){
-    const colorChange = isWanted === true ? "#8a5dd2" : "#FFFF"
+    const colorChange = isWanted === true ? "#8a5dd2" : "#232426"
     return colorChange
   }
   
@@ -94,46 +87,51 @@ export default function MainCard(){
   getUpdatedWishList(wishList)
 
   return(
-    <div>
+    <div className="relative">
       {
        gameThatHasTheSameIndexAsTheCarousel.map((gameInfo)=>{
         return(
-        <div 
-          key={gameInfo.id}
-          className="h-[60vh] w-full relative flex flex-col justify-between rounded"
-        >
-          <Image 
-            alt=""
-            src={gameInfo.urlCardBgImage}
-            sizes="100vw"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit:'cover',
-              borderRadius: '10px'
-              
-            }}
-            width={500}
-            height={300}
-          />
-          <div className="flex absolute p-2 top-0 right-0">
-            <CardIcons 
-              onClick={()=>checkTheGameAlreadyHasItOnTheWishList !== undefined ? deleteGameToFavoritesList(idCurrentCardWishList.toString()):gameInformationAddedToWishList(gameInfo.name, gameInfo.urlCardBgImage, gameInfo.id)}
-              icon={changeTheIconIfItIsOnTheWishList(returnsTrueOrFalseForWishList)} 
-              iconColor={changeTheColorOfTheIconIfItIsOnTheWishList(returnsTrueOrFalseForWishList)} 
+        <div key={gameInfo.id}>
+          <Link
+          href={
+            {
+              pathname:'/gamePage',
+              query:`idGame=${gameInfo.id}`
+            }
+            }
+            className="h-[60vh] w-full relative flex flex-col justify-between rounded"
+          >
+            <Image 
+              alt=""
+              src={gameInfo.urlCardBgImage}
+              sizes="100vw"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit:'cover',
+                borderRadius: '10px'
+                
+              }}
+              width={500}
+              height={300}
             />
-          </div>
-          <div className="absolute bottom-0 left-0 flex justify-start items-center gap-2 bg-gradient-to-r from-[#000000] p-4">
-            <div className="flex flex-col gap-2">
-              <h1>{gameInfo.name}</h1>
-              <p className="w-[50%] text-xs line-clamp-3">{gameInfo.description}</p>
-              <span>{gameInfo.value}</span>
-              <div>
-                <Button label="Comprar" linkToPage="/gamePage" idGame={gameInfo.id}/>
+            <div className="absolute bottom-0 left-0 flex justify-start items-center gap-2 bg-gradient-to-r from-[#000000] p-4">
+              <div className="flex flex-col gap-2">
+                <h1>{gameInfo.name}</h1>
+                <p className="w-[50%] text-xs line-clamp-3">{gameInfo.description}</p>
+                <span>{gameInfo.value}</span>
+                  <Button label="COMPRAR" linkToPage="/gamePage" idGame={gameInfo.id}/>
               </div>
             </div>
+          </Link>
+          <div className="flex absolute p-2 top-0 right-0">
+              <CardIcons 
+                onClick={()=>checkTheGameAlreadyHasItOnTheWishList !== undefined ? deleteGameToFavoritesList(idCurrentCardWishList.toString()):gameInformationAddedToWishList(gameInfo.name, gameInfo.urlCardBgImage, gameInfo.id)}
+                icon={changeTheIconIfItIsOnTheWishList(returnsTrueOrFalseForWishList)} 
+                iconColor={changeTheColorOfTheIconIfItIsOnTheWishList(returnsTrueOrFalseForWishList)}
+              />
+            </div>
             <Carousel cardBgImage={listHighlighted} indexOfListUsedInCarrosel={indexOfTheGameSelectedInTheCarousel} updatedIndex={indexOfTheGameSelectedInCarousel}/>
-          </div>
         </div>
         )
       })}

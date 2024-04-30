@@ -12,7 +12,7 @@ export default function CardIcons({icon: Icon, iconColor, iconSize, onClick}:Ico
   return(
     <span
       onClick={onClick} 
-      className="p-2 rounded bg-[#232426] cursor-pointer">
+      className="p-1 rounded bg-[#fff] cursor-pointer">
       <Icon 
         className="drop-shadow-xl"
         color={iconColor} 
