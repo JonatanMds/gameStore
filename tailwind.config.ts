@@ -19,10 +19,9 @@ const config: Config = {
       'primary-purple':{
         300: '#8a5dd2' 
       },
-      'background':{
-        300: '#1c2c3b',
-        400: '#16202C',
-        500: '#0D1720'
+      'second-black':{
+        300: '#232426',
+        500: '#1d1d1d'
       }
     },
   },

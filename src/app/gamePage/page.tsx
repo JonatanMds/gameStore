@@ -4,11 +4,12 @@ import SidebarMenu from "../sidebarMenu";
 import { useEffect, useState } from "react";
 import { api } from "../lib";
 import { useSearchParams } from "next/navigation";
-import Link from "next/link";
 import Button from "../components/button";
 import { FaPlaystation, FaWindows, FaXbox } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import React from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 type HighlightedListType = {
   id: string,
@@ -19,7 +20,6 @@ type HighlightedListType = {
   value: string,
   description: string
 }
-
 
 export default function GamePage(){
 
@@ -37,21 +37,25 @@ export default function GamePage(){
   },[])
   
   return(
-    <div className="flex min-h-screen flex items-start justify-between bg-[#232426]">
+    <div className="h-full flex items-start justify-between bg-second-black-300">
       <SidebarMenu />
       <div className="h-full w-full flex flex-col gap-9">
         {listGames.map((gameInfo)=>{
           return(
             <div key={gameInfo.id}>
               <div className="w-full relative">
-              <Image
-                alt=""
-                src={gameInfo.urlCardBgImage}
-                width={1200}
-                height={1200}
-                style={{width:"100%", height:"70vh", objectFit:'cover', objectPosition:'top'}}
-              />
-              <section className="w-full absolute bottom-[-36px] flex px-6 pt-6 gap-6 bg-gradient-to-t from-[#232426] from-20%">
+              <div>
+                <video 
+                  className="w-full h-[70vh] object-cover"
+                  // controls 
+                  autoPlay={true}
+                  loop
+                  playsInline
+                  muted 
+                  src={require('../../../public/teste.mp4')} 
+                />
+              </div>
+              <section className="w-full absolute bottom-[-36px] flex px-6 pt-6 gap-6 bg-gradient-to-t from-second-black-300 from-20%">
                 <Image 
                   alt=""
                   src={gameInfo.urlCardBgImage}
@@ -63,9 +67,9 @@ export default function GamePage(){
                   <h1 className="text-4xl font-bold">{gameInfo.name}</h1>
                   <p className="text-sm">{gameInfo.description}</p>
                   <ul className="flex gap-2">
-                    <li className="border rounded p-2 flex justify-center items-center gap-2">Xbox <FaXbox /></li>
-                    <li className="border rounded p-2 flex justify-center items-center gap-2">PS5 <FaPlaystation /></li>
-                    <li className="border rounded p-2 flex justify-center items-center gap-2">PC <FaWindows /></li>
+                    <li className="border border-[#8b8b8b] rounded p-2 flex justify-center items-center gap-2">Xbox <FaXbox /></li>
+                    <li className="border border-[#8b8b8b] rounded p-2 flex justify-center items-center gap-2">PS5 <FaPlaystation /></li>
+                    <li className="border border-[#8b8b8b] rounded p-2 flex justify-center items-center gap-2">PC <FaWindows /></li>
                   </ul>
                 </div>
                 <div className="w-[40%] flex flex-col justify-between">
@@ -91,50 +95,39 @@ export default function GamePage(){
                   </div>
                 </div>
               </section>
-            </div>
-            {/* <div>
-              <h1 className="text-2xl">About the game</h1>
-              <p className="text-[#b5bdc7]">Uma aventura de ação e história, que combina exploração e combate em ritmo acelerado. Como Kena, os jogadores encontram e desenvolvem uma equipe de encantadores companheiros espirituais chamados Rot, aprimorando suas habilidades e criando novas maneiras de manipular o ambiente.</p>
-              <button className="rounded bg-[#1d1d29] p-2">show more</button>
-              <h1 className="text-2xl ">Visuais</h1>
-              <div>
-                <h1 className="text-2xl">Required</h1>
-                <div className="w-full flex gap-4">
-                  <div className="w-full flex flex-col rounded bg-background-400 p-4">
-                    <p>Minimum</p>
-                    <ul>
-                      <li className="text-sm text-[#b5bdc7]">System</li>
-                      <li>Windows 10</li>
-                      <li className="text-sm text-[#b5bdc7]">Processor</li>
-                      <li>Ryzen 5</li>
-                      <li className="text-sm text-[#b5bdc7]">Graphics</li>
-                      <li>Radeon x</li>
-                      <li className="text-sm text-[#b5bdc7]">Memory</li>
-                      <li>8 GB RAM</li>
-                      <li className="text-sm text-[#b5bdc7]">Storage</li>
-                      <li>100 GB</li>
-                    </ul>
-                  </div>
-                  <div className="w-full flex flex-col rounded bg-background-400 p-4">
-                    <p>Minimum</p>
-                    <ul>
-                      <li className="text-sm text-[#b5bdc7]">System</li>
-                      <li>Windows 10</li>
-                      <li className="text-sm text-[#b5bdc7]">Processor</li>
-                      <li>Ryzen 5</li>
-                      <li className="text-sm text-[#b5bdc7]">Graphics</li>
-                      <li>Radeon x</li>
-                      <li className="text-sm text-[#b5bdc7]">Memory</li>
-                      <li>8 GB RAM</li>
-                      <li className="text-sm text-[#b5bdc7]">Storage</li>
-                      <li>100 GB</li>
-                    </ul>
-                  </div>
-                </div>
               </div>
-            </div> */}
+              <div>
+              <Carousel className="mt-32">
+                <div>
+                <Image 
+                  alt=""
+                  src={gameInfo.urlCardBgImage}
+                  width={400}
+                  height={400}
+                  style={{height:"250px", width:"200px", objectFit:"cover", borderRadius:"4%"}}
+                />
+                </div>
+                <div>
+                <Image 
+                  alt=""
+                  src={gameInfo.urlCardBgImage}
+                  width={400}
+                  height={400}
+                  style={{height:"250px", width:"200px", objectFit:"cover", borderRadius:"4%"}}
+                />
+                </div>
+                <div>
+                <Image 
+                  alt=""
+                  src={gameInfo.urlCardBgImage}
+                  width={400}
+                  height={400}
+                  style={{height:"250px", width:"200px", objectFit:"cover", borderRadius:"4%"}}
+                />
+                </div>
+            </Carousel>
+              </div>
             </div>
-
           )
         })} 
       </div>
