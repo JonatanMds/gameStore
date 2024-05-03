@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ElementType } from "react";
 
-interface iconProps{
+type iconProps = {
   name: string,
   icon: ElementType;
   linkToPage: string

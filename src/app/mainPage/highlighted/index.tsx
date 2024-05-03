@@ -1,13 +1,13 @@
 "use client"
 import { useContext, useEffect, useState } from "react";
-import { api } from "../lib";
+import { api } from "../../lib";
 import CardGame from "./cardGame";
 import { PiHeartFill } from "react-icons/pi";
 import { FaRegHeart } from "react-icons/fa";
-import { WishListContext } from "../components/main";
+import { WishListContext } from "../../mainPage";
 
 
-interface HighlightedListProps {
+type HighlightedListProps = {
   id: string,
   name: string,
   urlCardBgImage: string,
@@ -25,7 +25,7 @@ type WishListType = {
 
 export default function Highlighted(){
 
-  const {wishListProp, wishList, setWishList} = useContext(WishListContext)
+  const {wishList, setWishList} = useContext(WishListContext)
   const [listGame, setListGame] = useState<HighlightedListProps[]>([])
   const [selectedGameId, setSelectedGameId] = useState<WishListType>()
   
@@ -74,8 +74,8 @@ export default function Highlighted(){
   }
 
   function checkIfWishListAlreadyExists(idGameAtual: string){
-    const verifica = wishList.filter((idGame)=> idGame.id === idGameAtual).length
-    return verifica
+    const checking = wishList.filter((idGame)=> idGame.id === idGameAtual).length
+    return checking
   }
 
   return(

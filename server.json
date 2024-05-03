@@ -6,24 +6,42 @@
       "urlCardBgImage": "https://image.api.playstation.com/vulcan/img/rnd/202201/1616/THJbARAq2YiRVUv5abCQ8GYQ.png",
       "wishlist": false,
       "highlighted": false,
-      "value": "R$ 60,00",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit veniam ab, consequatur autem nostrum veritatis quisquam. Reiciendis non odit nihil dolore, rerum eos. Sint, dolorem rem recusandae saepe esse dicta."
+      "value": "R$ 75,99",
+      "urlGameImages": [
+        "https://gmedia.playstation.com/is/image/SIEPDC/sifu-screenshot-03-en-06apr21?$1600px$",
+        "https://gmedia.playstation.com/is/image/SIEPDC/sifu-screenshot-06-en-06apr21?$1600px$",
+        "https://gmedia.playstation.com/is/image/SIEPDC/sifu-screenshot-08-en-8apr21?$1600px$",
+        "https://gmedia.playstation.com/is/image/SIEPDC/sifu-screenshot-02-en-06apr21?$1600px$"
+      ],
+      "description": "Sifu é um beat' em up estiloso e intenso, contando com um combate corpo a corpo visceral em um cenário urbano contemporâneo. Dos mesmos criadores de Absolver, o aclamado jogo de luta para PS4, desta vez a Sloclap nos brinda com Sifu, onde acompanhamos a vingança de um jovem aprendiz de kung fu contra os assassinos de sua família."
     },
     {
       "id": "1",
-      "name": "suicide squad kill the justice league",
+      "name": "Suicide Squad: Kill the Justice League",
       "urlCardBgImage": "https://images6.alphacoders.com/117/1177249.jpg",
       "wishlist": false,
       "highlighted": true,
       "value": "R$ 299,00",
+      "urlGameImages": [
+        "https://gmedia.playstation.com/is/image/SIEPDC/suicide-squad-kill-the-justice-league-screen-04-ps4-ps5-en-18nov21?$1600px$",
+        "https://gmedia.playstation.com/is/image/SIEPDC/suicide-squad-kill-the-justice-league-screen-03-ps4-ps5-en-18nov21?$1600px$",
+        "https://gmedia.playstation.com/is/image/SIEPDC/suicide-squad-kill-the-justice-league-screen-01-ps4-ps5-en-18nov21?$1600px$",      
+        "https://gmedia.playstation.com/is/image/SIEPDC/suicide-squad-kill-the-justice-league-screen-01-ps4-ps5-en-18nov21?$1600px$"
+      ],
       "description": "Dos criadores de Batman: Arkham, Esquadrão Suicida: Mate a Liga da Justiça é um jogo de tiro em terceira pessoa que desafia o gênero, onde os vilões mais sem caráter devem fazer o impossível: Matar a Liga da Justiça."
     },
     {
       "id": "2",
-      "name": "hogwarts legacy",
+      "name": "Hogwarts Legacy",
       "urlCardBgImage": "https://assets.xboxservices.com/assets/13/cf/13cf037e-0e97-4812-90d9-b18791367f09.jpg?n=Hogwarts-Legacy_GLP-Page-Hero-1084_Redesign_1920x1080_01.jpg",
       "wishlist": false,
       "highlighted": false,
+      "urlGameImages": [
+        "https://assets.xboxservices.com/assets/13/cf/13cf037e-0e97-4812-90d9-b18791367f09.jpg?n=Hogwarts-Legacy_GLP-Page-Hero-1084_Redesign_1920x1080_01.jpg",
+        "https://gmedia.playstation.com/is/image/SIEPDC/hogwarts-legacy-screen-01-ps5-en-02oct20?$1600px$",
+        "https://gmedia.playstation.com/is/image/SIEPDC/hogwarts-legacy-screen-01-ps5-en-02oct20?$1600px$",
+        "https://gmedia.playstation.com/is/image/SIEPDC/hogwarts-legacy-screen-02-ps5-en-02oct20?$1600px$"
+      ],
       "value": "R$ 199,00",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit veniam ab, consequatur autem nostrum veritatis quisquam. Reiciendis non odit nihil dolore, rerum eos. Sint, dolorem rem recusandae saepe esse dicta."
     },
@@ -31,6 +49,12 @@
       "id": "3",
       "name": "Kena: Bridge of Spirits",
       "urlCardBgImage": "https://image.api.playstation.com/vulcan/ap/rnd/202102/2307/vbIii6P97qiAOhdnYdLT85u8.jpg",
+      "urlGameImages": [
+        "https://image.api.playstation.com/vulcan/ap/rnd/202008/2619/aEqpsWKWYe1dxn9zKs7HgLai.jpg?w=440",
+        "https://image.api.playstation.com/vulcan/ap/rnd/202102/2307/vbIii6P97qiAOhdnYdLT85u8.jpg",
+        "https://image.api.playstation.com/vulcan/ap/rnd/202009/0720/0rCh7EvYUxpWBAvBpjEp8ZkV.jpg?w=780&thumb=false",
+        "https://image.api.playstation.com/vulcan/ap/rnd/202009/0720/0rCh7EvYUxpWBAvBpjEp8ZkV.jpg?w=780&thumb=false"
+      ],
       "wishlist": false,
       "highlighted": false,
       "value": "R$ 159,00",
@@ -99,11 +123,5 @@
       "cardBgImage": "https://images6.alphacoders.com/117/1177249.jpg"
     }
   ],
-  "wishlist": [
-    {
-      "id": "3",
-      "name": "Kena: Bridge of Spirits",
-      "urlCardBgImage": "https://image.api.playstation.com/vulcan/ap/rnd/202102/2307/vbIii6P97qiAOhdnYdLT85u8.jpg"
-    }
-  ]
+  "wishlist": []
 }

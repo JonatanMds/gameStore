@@ -1,13 +1,13 @@
 "use client"
-import { PiHeartFill, PiShoppingCart } from "react-icons/pi";
+import { PiHeartFill} from "react-icons/pi";
 import { useContext, useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { api } from "@/app/lib";
 import Image from "next/image";
 import Carousel from "./carousel";
-import CardIcons from "../components/icons/cardIcons";
-import Button from "../components/button";
-import { WishListContext } from "../components/main";
+import CardIcons from "../../components/icons/cardIcons";
+import Button from "../../components/button";
+import { WishListContext } from "../../mainPage";
 import Link from "next/link";
 
 type HighlightedListType = {

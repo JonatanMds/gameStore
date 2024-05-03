@@ -3,13 +3,12 @@ import Image from "next/image";
 import { PiShoppingCart} from "react-icons/pi";
 import { CiHeart } from "react-icons/ci";
 import { MdPeopleAlt } from "react-icons/md";
-import IconsGameShop from "../components/icons/iconsHeader";
+import IconsGameShop from "../../components/icons/iconsHeader";
 import { useContext, useEffect, useMemo, useState } from "react";
-import { api } from "../lib";
-import { WishListContext } from "../components/main";
+import { api } from "../../lib";
+import { WishListContext } from "..";
 import { IoMdSearch } from "react-icons/io";
 import Link from "next/link";
-// import { WishListContext } from "../components/main";
 
 interface HighlightedListProps {
   id: number,
@@ -27,12 +26,12 @@ interface WishListTypes {
   urlCardBgImage: string,
 }
 
+
 export default function Header(){
 
-  const {wishListProp, wishList, setWishList} = useContext(WishListContext)
+  const {updatedWishList, wishList} = useContext(WishListContext)
   const [listHighlighted, setListHighlighted] = useState<HighlightedListProps[]>([])
   const [getValueFromInput, setGetValueFromInput] = useState('')
-  const [saveInputValue, setSaveInputValue] = useState('')
   const urlImageAvatarIcon = "https://i.pinimg.com/originals/83/30/62/833062339386349698553fe1cd7cc2f5.jpg"
 
   async function fetchHighlightedList(){
@@ -50,19 +49,15 @@ export default function Header(){
   }
 
   const filterSearchByName = useMemo(()=>{
-    const lowerBusca = getValueFromInput.toLowerCase();
-    const buscandoGame = listHighlighted.filter((game) => (game.name.toLowerCase().includes(lowerBusca)))
-    return buscandoGame
+    const transformingStringIntoLowercase = getValueFromInput.toLowerCase();
+    const searchingGame = listHighlighted.filter((game) => (game.name.toLowerCase().includes(transformingStringIntoLowercase)))
+    return searchingGame
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[getValueFromInput])
 
-  function getGameNameOfFieldSearch(e: string){
-    setSaveInputValue(e)
-  }
-
-  function verificaSeEstaFavoritado(idGameAtual: string){
-    const verifica = wishList.filter((idGame)=> idGame.id === idGameAtual).length
-    return verifica
+  function checkIfThisFavorite(idGameAtual: string){
+    const checking = wishList.filter((idGame)=> idGame.id === idGameAtual).length
+    return checking
   }
 
   return(
@@ -87,7 +82,6 @@ export default function Header(){
               } 
             className="w-full flex justify-start items-center cursor-pointer p-1 hover:bg-[#fff] hover:text-[#000]"  
             key={game.id}
-            onClick={()=>getGameNameOfFieldSearch(game.name)}
             >
               <Image 
                 alt=""
@@ -99,7 +93,7 @@ export default function Header(){
               <div className="w-[60%] pl-2 truncate">
                 <h1 className="font-semibold">{game.name}</h1>
                 <p className="font-light">{game.value}</p>
-                {verificaSeEstaFavoritado(game.id.toString()) > 0 ? <p className="flex justify-end font-light px-2 rounded-tl bg-[#8a5dd2]">wish</p> : undefined}
+                {checkIfThisFavorite(game.id.toString()) > 0 ? <p className="flex justify-end font-light px-2 rounded-tl bg-[#8a5dd2]">wish</p> : undefined}
               </div>
             </Link>
           )
@@ -113,7 +107,7 @@ export default function Header(){
             iconColor="#ffff" 
             iconSize={28} 
           />
-          {wishListProp?.length > 0 ? <p className="flex absolute top-0 right-0 text-xs bg-[#8a5dd2] px-2 rounded-full">{wishListProp?.length}</p> : undefined}
+          {updatedWishList?.length > 0 ? <p className="flex absolute top-0 right-0 text-xs bg-[#8a5dd2] px-2 rounded-full">{updatedWishList?.length}</p> : undefined}
         </div>
         <Link 
           href="/cart"
@@ -128,7 +122,7 @@ export default function Header(){
             <p className="text-xs">#1568</p>
           </div>
           <Image 
-            className="w-full rounded-full ring ring-[#38393b] ring-offset-4 ring-offset-[#232426]"
+            className="w-full rounded-full ring ring-base-purple-300 ring-offset-4 ring-offset-[#232426]"
             alt="Avatar user"
             src={urlImageAvatarIcon}
             width={35}

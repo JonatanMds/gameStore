@@ -2,7 +2,6 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/components/sidebarMenu/cardGameFastLaunch/*.{js,ts,jsx,tsx,mdx}"
@@ -16,10 +15,10 @@ const config: Config = {
       },
     },
     colors: {
-      'primary-purple':{
+      'base-purple':{
         300: '#8a5dd2' 
       },
-      'second-black':{
+      'base-black':{
         300: '#232426',
         500: '#1d1d1d'
       }

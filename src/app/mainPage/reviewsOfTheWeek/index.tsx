@@ -1,5 +1,5 @@
 "use client"
-import IconsGameShop from "../components/icons/iconsHeader";
+import IconsGameShop from "../../components/icons/iconsHeader";
 import NewsCard from "./newsCard";
 import { BsPlusLg } from "react-icons/bs";
 

@@ -1,22 +1,21 @@
 "use client"
-import Highlighted from "@/app/highlighted";
-import ReviewsOfTheWeek from "@/app/reviewsOfTheWeek";
-import FreeGames from "@/app/highlighted/freeGames";
-import BestSoldAndPlayed from "@/app/highlighted/bestAoldAndPlayed";
-import Header from "@/app/header";
-import MainCard from "@/app/mainCard";
+import Highlighted from "@/app/mainPage/highlighted";
+import ReviewsOfTheWeek from "@/app/mainPage/reviewsOfTheWeek";
+import FreeGames from "@/app/mainPage/highlighted/freeGames";
+import Header from "@/app/mainPage/header";
 import { Dispatch, SetStateAction, createContext, useEffect, useState } from "react";
 import { api } from "@/app/lib";
+import MainCard from "./mainCard";
 
 
-interface WishListType {
+type WishListType = {
   name: string,
   urlCardBgImage: string,
   id: string,
 }
 
 interface WishListContextType {
-  wishListProp: WishListType[]
+  updatedWishList: WishListType[]
   getUpdatedWishList: (list: WishListType[])=>void
   setWishList: Dispatch<SetStateAction<WishListType[]>>
   wishList: WishListType[]
@@ -25,13 +24,13 @@ interface WishListContextType {
 
 export const WishListContext = createContext({} as WishListContextType)
 
-export default function Main(){
+export default function MainPage(){
 
-  const [wishListProp, setWishListProp] = useState<WishListType[]>([])
+  const [updatedWishList, setUpdatedWishList] = useState<WishListType[]>([])
   const [wishList, setWishList] = useState<WishListType[]>([])
   
   function getUpdatedWishList(list: WishListType[]){
-    setWishListProp(list)
+    setUpdatedWishList(list)
   }
 
 
@@ -45,8 +44,8 @@ export default function Main(){
   },[])
 
   return(
-    <main className="h-full w-full flex flex-col gap-9">
-      <WishListContext.Provider value={{wishListProp, getUpdatedWishList, setWishList, wishList}}>
+    <main className="h-full w-full flex flex-col gap-9 px-6">
+      <WishListContext.Provider value={{updatedWishList, getUpdatedWishList, setWishList, wishList}}>
         <Header />
         <MainCard />
         <Highlighted />

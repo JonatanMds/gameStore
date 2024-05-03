@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-interface cardFastLaunchTypes {
+type cardFastLaunchTypes = {
   name: string;
   cardBgImage: string
 }

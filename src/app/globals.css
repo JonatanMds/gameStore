@@ -18,16 +18,23 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+    background-color: #232426
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-[#ffff];
   }
 }

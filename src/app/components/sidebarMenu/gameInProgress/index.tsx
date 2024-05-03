@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 
-interface GameInProgressTypes{
+type GameInProgressTypes = {
   nameGame: string;
   progress: string;
   cardBgImage: string;
