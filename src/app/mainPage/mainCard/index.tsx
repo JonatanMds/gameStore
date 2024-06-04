@@ -9,27 +9,12 @@ import CardIcons from "../../components/icons/cardIcons";
 import Button from "../../components/button";
 import { WishListContext } from "../../mainPage";
 import Link from "next/link";
-
-type HighlightedListType = {
-  id: string,
-  name: string,
-  urlCardBgImage: string,
-  wishlist: boolean,
-  highlighted: boolean,
-  value: string,
-  description: string
-}
-
-type WishListType = {
-  name: string,
-  urlCardBgImage: string,
-  id: string,
-}
+import { IGameInfos, IWishListInfos } from "@/shared/interfaces";
 
 export default function MainCard(){
   const {getUpdatedWishList, wishList, setWishList} = useContext(WishListContext)
-  const [listHighlighted, setListHighlighted] = useState<HighlightedListType[]>([])
-  const [selectedGameId, setSelectedGameId] = useState<WishListType>()
+  const [listHighlighted, setListHighlighted] = useState<IGameInfos[]>([])
+  const [selectedGameId, setSelectedGameId] = useState<IWishListInfos>()
   const [indexOfTheGameSelectedInCarousel, setIndexOfTheGameSelectedInCarousel] = useState(0)
 
   async function fetchHighlightedList(){
@@ -135,6 +120,7 @@ export default function MainCard(){
         </div>
         )
       })}
+      {/* <Carousel images={listHighlighted}/> */}
     </div>
   )
 }

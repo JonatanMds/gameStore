@@ -1,23 +1,12 @@
+import { ICardGameProp } from "@/shared/interfaces";
 import Image from "next/image";
 import Link from "next/link";
-import { ElementType } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 
-type InfoGameProp = {
-  name: string,
-  id: string,
-  urlCardBgImage: string,
-  value: string,
-  icon: ElementType;
-  iconColor: string;
-  iconSize?: number;
-  onClick: ()=>void;
-}
-
-export default function CardGame({name,urlCardBgImage,value, icon: Icon, iconColor, iconSize, onClick, id}:InfoGameProp){
+export default function CardGame({name,urlCardBgImage,value, icon: Icon, iconColor, iconSize, onClick, id}:ICardGameProp){
 
   return(
-    <div className="relative hover:shadow-xl hover:shadow-[#8a5dd2] p-1 bg-[#1d1d1d] rounded">
+    <div className="relative hover:shadow-md hover:shadow-[#8a5dd2] p-1 bg-[#1d1d1d] mx-auto md:mx-2">
       <Link
       href={
           {
@@ -25,7 +14,7 @@ export default function CardGame({name,urlCardBgImage,value, icon: Icon, iconCol
             query:`idGame=${id}`
           }
         } 
-        className="relative h-full w-[260px] flex flex-col gap-2">
+        className="relative h-full w-[full] flex flex-col gap-2">
         <div>
           <Image
             alt=""
@@ -34,10 +23,10 @@ export default function CardGame({name,urlCardBgImage,value, icon: Icon, iconCol
             height={400}
             style={{
               width: '100%',
-              height: '260px',
               objectFit:'cover',
               borderRadius: '4px'
             }}
+            className="h-[160px]"
           />
 
         </div>
@@ -68,7 +57,7 @@ export default function CardGame({name,urlCardBgImage,value, icon: Icon, iconCol
         >
           <button className="flex absolute bottom-2 left-3 bg-[#8a5dd2] p-2 gap-2 rounded">
             <FaShoppingCart />
-            <p className="text-sm">{value}</p>
+            <p className="text-xs md-text-sm">{value}</p>
           </button>
         </Link>
     </div>

@@ -4,33 +4,19 @@ import { PiShoppingCart} from "react-icons/pi";
 import { CiHeart } from "react-icons/ci";
 import { MdPeopleAlt } from "react-icons/md";
 import IconsGameShop from "../../components/icons/iconsHeader";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState} from "react";
 import { api } from "../../lib";
 import { WishListContext } from "..";
 import { IoMdSearch } from "react-icons/io";
 import Link from "next/link";
-
-interface HighlightedListProps {
-  id: number,
-  name: string,
-  urlCardBgImage: string,
-  wishlist: boolean,
-  highlighted: boolean,
-  value: string,
-  description: string
-}
-
-interface WishListTypes {
-  id: number,
-  name: string,
-  urlCardBgImage: string,
-}
+import MenuHamburge from "./menuHamburger";
+import { IGameInfos } from "@/shared/interfaces";
 
 
 export default function Header(){
 
   const {updatedWishList, wishList} = useContext(WishListContext)
-  const [listHighlighted, setListHighlighted] = useState<HighlightedListProps[]>([])
+  const [listHighlighted, setListHighlighted] = useState<IGameInfos[]>([])
   const [getValueFromInput, setGetValueFromInput] = useState('')
   const urlImageAvatarIcon = "https://i.pinimg.com/originals/83/30/62/833062339386349698553fe1cd7cc2f5.jpg"
 
@@ -61,17 +47,19 @@ export default function Header(){
   }
 
   return(
-    <header className="flex justify-between items-start mt-6">
-      <div className="relative">
+    <header className="w-full flex flex-col md:flex-row md:justify-between items-center md:items-start mt-6">
+      <MenuHamburge />
+      <div className="w-full md:w-[30%] relative">
         <label className="relative text-gray-400 focus-within:text-gray-600 block mb-2">
           <IoMdSearch className="pointer-events-none absolute top-1/2 transform -translate-y-1/2 left-3" color="#232426" size={22}/>
           <input type="text"
             placeholder="Search..."
             onChange={currentInputValue}
-            value={getValueFromInput} 
+            value={getValueFromInput}
+            onBlur={()=> console.log('teste')}
             className="w-full form-input rounded py-2 px-3 bg-[#38393b] placeholder-gray-400 text-gray-500 appearance-none w-full block pl-14 focus:outline-none" />
         </label>
-        <div className="w-[150%] absolute z-10 flex flex-col bg-[#38393b] rounded">{getValueFromInput.length > 0 && filterSearchByName.map((game)=>{
+        <div className="w-[100%] md:w-[150%] absolute z-10 flex flex-col bg-[#38393b] rounded">{getValueFromInput.length > 0 && filterSearchByName.map((game)=>{
           return(
             <Link 
             href={
@@ -100,7 +88,7 @@ export default function Header(){
         })}
       </div>
       </div>
-      <nav className="flex justify-between items-start gap-8">
+      <nav className="hidden md:flex justify-between items-start gap-8">
         <div className="relative flex">
           <IconsGameShop
             icon={CiHeart} 

@@ -3,11 +3,11 @@ import Image from "next/image"
 export default function FreeGames(){
   return(
     <div className="flex flex-col gap-4 bg-[#1d1d1d] p-6 rounded">
-      <div className="flex justify-between">
-        <h1 className="text-2xl">Destaques da semana</h1>
-        <p className="text-sm">Ver mais</p>
+      <div className="flex justify-between items-center">
+        <h1 className="text-base md:text-2xl">Destaques da semana</h1>
+        <p className="text-xs md:text-sm">Ver mais</p>
       </div>
-      <ul className="flex justify-between">
+      <ul className="flex flex-col md:flex-row justify-between gap-4">
         <li>
           <Image
             className="rounded" 
@@ -16,8 +16,10 @@ export default function FreeGames(){
             width={340}
             height={390}
           />
-          <h1>name</h1>
-          <p>Gratis - 04 de abr. ás 12:00</p>
+          <div className="flex flex-col items-center md:items-start justify-between">
+            <h1>name</h1>
+            <p className="text-xs md:text-base">Gratis - 04 de abr. ás 12:00</p>
+          </div>
         </li>
         <li>
         <Image 
@@ -26,8 +28,10 @@ export default function FreeGames(){
             width={340}
             height={390}
           />
-          <h1>name</h1>
-          <p>Gratis - 04 de abr. ás 12:00</p>
+           <div className="flex flex-col items-center md:items-start justify-between">
+            <h1>name</h1>
+            <p className="text-xs md:text-base">Gratis - 04 de abr. ás 12:00</p>
+          </div>
         </li>
         <li>
         <Image 
@@ -36,8 +40,10 @@ export default function FreeGames(){
             width={340}
             height={390}
           />
-          <h1>name</h1>
-          <p>Gratis - 04 de abr. ás 12:00</p>
+           <div className="flex flex-col items-center md:items-start justify-between">
+            <h1>name</h1>
+            <p className="text-xs md:text-base">Gratis - 04 de abr. ás 12:00</p>
+          </div>
         </li>
       </ul>
     </div>

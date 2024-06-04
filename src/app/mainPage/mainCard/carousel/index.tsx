@@ -5,20 +5,10 @@ import { FaArrowCircleLeft } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { GoDotFill } from "react-icons/go";
+import { ICarouselInfoProps } from "@/shared/interfaces";
 
 
-type Teste = {
-  id?: string,
-  name?: string,
-  urlCardBgImage: string,
-}
-interface CarouselInfoProps {
-  cardBgImage: Teste[],
-  indexOfListUsedInCarrosel: (indice: number)=>void
-  updatedIndex: number
-}
-
-export default function Carousel({cardBgImage, indexOfListUsedInCarrosel, updatedIndex}:CarouselInfoProps){
+export default function Carousel({cardBgImage, indexOfListUsedInCarrosel, updatedIndex}:ICarouselInfoProps){
  
   const [currentIndex, setCurrentIndex] = useState(updatedIndex)
 
@@ -42,7 +32,7 @@ export default function Carousel({cardBgImage, indexOfListUsedInCarrosel, update
 
   return(
     <div className="absolute flex bottom-8 right-4 flex flex-col max-w-[250px] h-[90px] mx-auto w-full">
-      <div className="absolute bottom-12 flex flex-col max-w-[250px] h-[90px] mx-auto w-full">
+      <div className=" hidden md:flex flex-col absolute bottom-12  max-w-[250px] h-[90px] mx-auto w-full">
         <div key={1} style={{backgroundImage: `url(${cardBgImage[currentIndex]?.urlCardBgImage})`}} className="w-full h-full rounded-2xl bg-center bg-cover duration-500"></div>
         <div className="absolute group-hover:block top-[50%] -translate-x-0 translate-y-[50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
           <FaArrowCircleLeft onClick={prevSlide}/>
@@ -52,7 +42,7 @@ export default function Carousel({cardBgImage, indexOfListUsedInCarrosel, update
           <FaArrowCircleRight onClick={nextSlide}/>
         </div>
       </div>
-        <div className="w-full absolute flex justify-center inset-x-0 bottom-0 h-12">
+        <div className="hidden md:flex justify-center w-full absolute inset-x-0 bottom-0 h-12">
           {cardBgImage.map((slide, slideIndex)=>(
             <div 
               key={slideIndex}

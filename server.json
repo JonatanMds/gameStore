@@ -25,7 +25,7 @@
       "urlGameImages": [
         "https://gmedia.playstation.com/is/image/SIEPDC/suicide-squad-kill-the-justice-league-screen-04-ps4-ps5-en-18nov21?$1600px$",
         "https://gmedia.playstation.com/is/image/SIEPDC/suicide-squad-kill-the-justice-league-screen-03-ps4-ps5-en-18nov21?$1600px$",
-        "https://gmedia.playstation.com/is/image/SIEPDC/suicide-squad-kill-the-justice-league-screen-01-ps4-ps5-en-18nov21?$1600px$",      
+        "https://gmedia.playstation.com/is/image/SIEPDC/suicide-squad-kill-the-justice-league-screen-01-ps4-ps5-en-18nov21?$1600px$",
         "https://gmedia.playstation.com/is/image/SIEPDC/suicide-squad-kill-the-justice-league-screen-01-ps4-ps5-en-18nov21?$1600px$"
       ],
       "description": "Dos criadores de Batman: Arkham, Esquadrão Suicida: Mate a Liga da Justiça é um jogo de tiro em terceira pessoa que desafia o gênero, onde os vilões mais sem caráter devem fazer o impossível: Matar a Liga da Justiça."
@@ -97,6 +97,15 @@
       "highlighted": false,
       "value": "R$ 159,00",
       "description": "Uma aventura de ação com foco na narrativa, combinando exploração com combates dinâmicos. Desvenda o passado como Kena, uma jovem Guia Espiritual em busca do sagrado Templo da Montanha."
+    },
+    {
+      "id": "3",
+      "name": "Kena: Bridge of Spirits",
+      "urlCardBgImage": "https://image.api.playstation.com/vulcan/ap/rnd/202102/2307/vbIii6P97qiAOhdnYdLT85u8.jpg",
+      "wishlist": false,
+      "highlighted": false,
+      "value": "R$ 159,00",
+      "description": "Uma aventura de ação com foco na narrativa, combinando exploração com combates dinâmicos. Desvenda o passado como Kena, uma jovem Guia Espiritual em busca do sagrado Templo da Montanha."
     }
   ],
   "userLibrary": [
@@ -109,11 +118,6 @@
       "id": "2",
       "name": "suicide squad kill the justice league",
       "cardBgImage": "https://images6.alphacoders.com/117/1177249.jpg"
-    },
-    {
-      "id": "3",
-      "name": "hogwarts legacy",
-      "cardBgImage": "https://assets.xboxservices.com/assets/13/cf/13cf037e-0e97-4812-90d9-b18791367f09.jpg?n=Hogwarts-Legacy_GLP-Page-Hero-1084_Redesign_1920x1080_01.jpg"
     }
   ],
   "progress": [
@@ -123,5 +127,11 @@
       "cardBgImage": "https://images6.alphacoders.com/117/1177249.jpg"
     }
   ],
-  "wishlist": []
+  "wishlist": [
+    {
+      "id": "1",
+      "name": "suicide squad kill the justice league",
+      "urlCardBgImage": "https://images6.alphacoders.com/117/1177249.jpg"
+    }
+  ]
 }

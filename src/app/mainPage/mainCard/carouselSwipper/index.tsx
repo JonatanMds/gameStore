@@ -1,8 +1,8 @@
 'use client';
-import { CSSProperties, useState } from "react";
+import { CSSProperties} from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation, Pagination} from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -30,7 +30,7 @@ export default function Carousel({cardBgImage, id}:CarouselInfoProps){
         centeredSlides={true}
         spaceBetween={10}
         loop
-        className="h-[250px] w-[1164px]"
+        className="h-[250px] md:w-[75vw]"
         style={{'--swiper-theme-color':"#8a5dd2"} as CSSProperties}
       >
         {cardBgImage.map((infoImage)=>{

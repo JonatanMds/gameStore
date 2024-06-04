@@ -5,29 +5,19 @@ import CardGame from "./cardGame";
 import { PiHeartFill } from "react-icons/pi";
 import { FaRegHeart } from "react-icons/fa";
 import { WishListContext } from "../../mainPage";
-
-
-type HighlightedListProps = {
-  id: string,
-  name: string,
-  urlCardBgImage: string,
-  wishlist: boolean,
-  highlighted: boolean,
-  value: string,
-  description: string
-}
-
-type WishListType = {
-  name: string,
-  urlCardBgImage: string,
-  id: string,
-}
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { IGameInfos, IWishListInfos } from "@/shared/interfaces";
 
 export default function Highlighted(){
 
   const {wishList, setWishList} = useContext(WishListContext)
-  const [listGame, setListGame] = useState<HighlightedListProps[]>([])
-  const [selectedGameId, setSelectedGameId] = useState<WishListType>()
+  const [listGame, setListGame] = useState<IGameInfos[]>([])
+  const [selectedGameId, setSelectedGameId] = useState<IWishListInfos>()
   
   async function fetchListGame(){
     const response = await api.get('/listOfDiscountedGames')
@@ -78,18 +68,46 @@ export default function Highlighted(){
     return checking
   }
 
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 3
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
+
   return(
-    <section className="w-full h-full">
-      <div>
-        <div className="w-full flex justify-between items-center">
-          <h1 className="text-xl">Grandes descontos</h1>
+    <section className="h-full">
+      <div className="lg:w-[75vw] flex flex-col justify-center">
+        <div className="flex justify-between items-center">
+          <h1 className="text-lg md:text-xl">Grandes descontos</h1>
           <a className="text-xs">mostrar mais</a>
         </div>
-        <ul className="flex justify-between mt-6">
-          {listGame.map((gameInfo)=>{
+        <Carousel 
+          responsive={responsive}
+          className="py-6"
+          ssr={true} // means to render carousel on server-side.
+          infinite={true}
+          autoPlaySpeed={1000}
+          removeArrowOnDeviceType={["tablet", "mobile"]}
+          // itemClass="carousel-item-padding-40-px"
+        >
+        {listGame.map((gameInfo)=>{
             return(
-              <li key={gameInfo.id}>
                 <CardGame
+                key={gameInfo.id}
                 onClick={()=> checkIfWishListAlreadyExists(gameInfo.id) > 0 ? deleteGameToFavoritesList(gameInfo.id.toString()):gameInformationAddedToWishList(gameInfo.name, gameInfo.urlCardBgImage, gameInfo.id)}
                 icon={changeTheIconIfItIsOnTheWishList(gameInfo.name)} 
                 iconColor={changeTheColorOfTheIconIfItIsOnTheWishList(gameInfo.name)} 
@@ -98,10 +116,9 @@ export default function Highlighted(){
                 urlCardBgImage={gameInfo.urlCardBgImage}
                 id={gameInfo.id}
                 />
-              </li>
-            )
-          })}
-        </ul>
+              )
+            })}
+        </Carousel>
       </div>
     </section>
   )

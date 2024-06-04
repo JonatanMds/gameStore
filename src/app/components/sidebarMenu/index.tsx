@@ -37,7 +37,7 @@ export default function SidebarMenu(){
 
 
   return(
-    <aside className="h-screen sticky top-0 w-[20vw] flex flex-col justify-between bg-[#1d1d1d] p-4 gap-8">
+    <aside className="h-[100vh] hidden lg:flex flex-col justify-between sticky top-0 w-[20vw] bg-[#1d1d1d] p-4 gap-8">
       <span className="flex justify-start items-center gap-2">
         <RiGamepadFill size={50}/>
         <Link 

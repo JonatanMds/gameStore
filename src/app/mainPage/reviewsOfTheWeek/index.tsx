@@ -8,13 +8,15 @@ export default function ReviewsOfTheWeek(){
   return(
     <section>
       <div className="flex justify-between items-center pb-8">
-        <h1 className="text-xl">Avaliações da semana</h1>
-        <IconsGameShop icon={BsPlusLg} iconColor="#ffff" iconSize={18} linkToPage="/"/>
+        <h1 className="text-lg md:text-xl">Avaliações da semana</h1>
+        <IconsGameShop icon={BsPlusLg} iconColor="#ffff" iconSize={18} />
       </div>
-      <div className="flex gap-4">
+      <div className="flex justify-between gap-4 md:gap-0">
         <NewsCard />
         <NewsCard />
-        <NewsCard />
+        <div className="hidden md:flex">
+          <NewsCard />
+        </div>
       </div>
     </section>
   )

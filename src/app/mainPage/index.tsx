@@ -6,19 +6,13 @@ import Header from "@/app/mainPage/header";
 import { Dispatch, SetStateAction, createContext, useEffect, useState } from "react";
 import { api } from "@/app/lib";
 import MainCard from "./mainCard";
-
-
-type WishListType = {
-  name: string,
-  urlCardBgImage: string,
-  id: string,
-}
+import { IWishListInfos } from "@/shared/interfaces";
 
 interface WishListContextType {
-  updatedWishList: WishListType[]
-  getUpdatedWishList: (list: WishListType[])=>void
-  setWishList: Dispatch<SetStateAction<WishListType[]>>
-  wishList: WishListType[]
+  updatedWishList: IWishListInfos[]
+  getUpdatedWishList: (list: IWishListInfos[])=>void
+  setWishList: Dispatch<SetStateAction<IWishListInfos[]>>
+  wishList: IWishListInfos[]
 }
 
 
@@ -26,10 +20,10 @@ export const WishListContext = createContext({} as WishListContextType)
 
 export default function MainPage(){
 
-  const [updatedWishList, setUpdatedWishList] = useState<WishListType[]>([])
-  const [wishList, setWishList] = useState<WishListType[]>([])
+  const [updatedWishList, setUpdatedWishList] = useState<IWishListInfos[]>([])
+  const [wishList, setWishList] = useState<IWishListInfos[]>([])
   
-  function getUpdatedWishList(list: WishListType[]){
+  function getUpdatedWishList(list: IWishListInfos[]){
     setUpdatedWishList(list)
   }
 
@@ -44,7 +38,7 @@ export default function MainPage(){
   },[])
 
   return(
-    <main className="h-full w-full flex flex-col gap-9 px-6">
+    <main className="h-full w-full flex flex-col gap-9 md:px-6 px-4">
       <WishListContext.Provider value={{updatedWishList, getUpdatedWishList, setWishList, wishList}}>
         <Header />
         <MainCard />
